@@ -18,10 +18,11 @@ export default function Header () {
               <li><Link href="/register" className="hover:underline">Register</Link></li> 
               </>
             )}
+
             {user && (
               <>
                 <li><Link href="/profile" className="hover:underline">Profile</Link></li> 
-                <li><Link href="/logout" onClick={logout} className="hover:underline">Logout</Link></li> 
+                <li><Link href="#" onClick={(e) => { e.preventDefault(); logout(); }} className="hover:underline">Logout</Link></li> 
               </>
             )}
           </ul>
