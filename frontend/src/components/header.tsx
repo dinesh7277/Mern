@@ -12,6 +12,8 @@ export default function Header () {
         <nav>
           <ul className="flex space-x-4">
             <li><Link href="/" className="hover:underline">Home</Link></li>
+            <li><Link href="/about" className="hover:underline">About Us</Link></li> 
+            <li><Link href="/contact" className="hover:underline">Contact Us</Link></li> 
             {!user && (
               <>
               <li><Link href="/login" className="hover:underline">Login</Link></li>

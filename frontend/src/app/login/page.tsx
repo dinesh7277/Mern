@@ -1,15 +1,22 @@
 'use client'; // Marking the file as a client component
 
-import { useState, useContext } from "react";
-import axios from "axios";
-import AuthContext from '../context/AuthContext';
+import { useState, useEffect, useContext } from "react";
+import AuthContext from '@/app/context/AuthContext';
 import { useRouter } from 'next/navigation'; 
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+        router.push("/profile"); // Redirect to login if not logged in
+    }
+}, [user, router]);
+
 
   const handleLogin = async (e: React.FormEvent) => {
 
@@ -18,6 +25,7 @@ export default function LoginPage() {
         router.push("/profile");
 
   };
+  
 
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded shadow-md">
